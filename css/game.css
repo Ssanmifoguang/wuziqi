@@ -1,0 +1,89 @@
+*{
+	font-family: game,"微软雅黑",arial;
+	padding: 0;
+	margin: 0;
+}
+@font-face {
+	font-family:'game';
+	src: url('汉仪雪君体简.ttf');
+}
+body{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.loginBox{
+	position: relative;
+	background: url(../img/login-bg.jpg);
+	background-repeat: no-repeat;
+	margin: 0 auto;
+	width: 1200px;
+	height: 600px;
+}
+.loginBox input[type=text]{
+	position: absolute;
+	bottom: 170px;
+	left: 480px;
+	height: 60px;
+	width: 230px;
+}
+.loginBox button{
+	position: absolute;
+	bottom: 88px;
+	left: 480px;
+	width: 230px;
+	height: 60px;
+	cursor: pointer;
+}
+.loginBox input[type=text],.loginBox button{
+	border: none;
+	outline: none;
+	background: transparent;
+	color: #FFFFFF;
+	font-size: 22px;
+	text-align: center;
+}
+
+/*主页面*/
+.mainBox{
+	position: relative;
+	background: url(../img/main-bg.jpg);
+	background-repeat: no-repeat;
+	margin: 0 auto;
+	width: 1200px;
+	height: 600px;
+}
+.mainBox input[type=text]{
+	position: absolute;
+	bottom: 50px;
+	left: 80px;
+	height: 30px;
+	width: 170px;
+}
+.mainBox button{
+	position: absolute;
+	bottom: 36px;
+	left: 290px;
+	width: 60px;
+	height: 60px;
+	cursor: pointer;
+}
+.mainBox input[type=text],.mainBox button{
+	border: none;
+	outline: none;
+	background: transparent;
+	color: #FFFFFF;
+	font-size: 22px;
+	text-align: center;
+}
+.mainProfile{
+	position: absolute;
+	top: 60px;
+	left: 100px;
+	width: 270px;
+	height: 160px;
+	background: #FFFFFF;
+}
