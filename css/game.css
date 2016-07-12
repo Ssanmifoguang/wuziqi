@@ -15,6 +15,9 @@ body{
 	align-items: center;
 	justify-content: center;
 }
+span{
+	color: #727272;
+}
 .loginBox{
 	position: relative;
 	background: url(../img/login-bg.jpg);
@@ -85,5 +88,122 @@ body{
 	left: 100px;
 	width: 270px;
 	height: 160px;
-	background: #FFFFFF;
+	display: flex;
+	justify-content: center;
+	flex-direction:column;
+}
+.mainProfile h1,.mainProfile p{
+	margin: 6px 0;
+	margin-left: 18px;
+}
+.mainProfile p{
+	font-size: 18px;
+}
+.onlineBox{
+	position: absolute;
+	top: 285px;
+	left: 87px;
+	width: 308px;
+	height: 184px;
+	
+}
+.onlineBox .head{
+	padding: 12px 24px;
+}
+.onlineBox .head:after{
+	display: block;
+	content: "";
+	clear: both;
+}
+.onlineBox .head h1{
+	font-size: 24px;
+	float: left;
+}
+.onlineBox .head span{
+	float: right;
+	line-height: 24px;
+} 
+.onlineBox .body{
+	
+	height: 130px;
+	overflow-y: scroll;
+}
+.onlineBox .body table{
+	width: 100%;
+	text-align: center;
+}
+.onlineBox .body table td{
+	width: 33.333%;
+	height: 30px;
+}
+.onlineBox .body table td span.online{
+	color: green;
+}
+.onlineBox .body table td span.playing{
+	color: red;
+}
+.roomBox{
+	position: absolute;
+	top: 44px;
+	left: 440px;
+	width: 694px;
+	height: 184px;	
+}
+.chatBox{
+	position: absolute;
+	top: 272px;
+	left: 440px;
+	width: 694px;
+	height: 276px;	
+}
+.roomBox h2,.chatBox h2{
+	text-align: center;
+	margin-top: 10px;
+}
+.rooms{
+	margin: 10px 0;
+	width: 100%;
+	height: 130px;
+	overflow-y: scroll;
+}
+.rooms .room{
+	margin: 0px 38px 20px;
+	float: left;
+	text-align: center;
+}
+.chats{
+	height: 190px;
+	font-size: 18px;
+	overflow-y: scroll;
+}
+.chats ul li{
+	margin: 20px 30px;
+	list-style: none;
+}
+.chats .myChat{
+	text-align: right;
+}
+.chats input[type=button]{
+	background: transparent;
+	border: none;
+	outline: none;
+	position: absolute;
+	cursor: pointer;
+	bottom: 10px;
+	left: 480px;
+	height: 28px;
+	font-size: 18px;
+}
+.chats input[type=text]{
+	position: absolute;
+	bottom: 10px;
+	left: 180px;
+	width: 280px;
+	height: 24px;
+	outline: none;
+	border: 2px solid #000000;
+	font-size: 18px;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
 }
