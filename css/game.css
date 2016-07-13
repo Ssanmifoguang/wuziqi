@@ -7,14 +7,6 @@
 	font-family:'game';
 	src: url('汉仪雪君体简.ttf');
 }
-body{
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
 span{
 	color: #727272;
 }
@@ -22,7 +14,7 @@ span{
 	position: relative;
 	background: url(../img/login-bg.jpg);
 	background-repeat: no-repeat;
-	margin: 0 auto;
+	margin: 180px auto;
 	width: 1200px;
 	height: 600px;
 }
@@ -55,7 +47,7 @@ span{
 	position: relative;
 	background: url(../img/main-bg.jpg);
 	background-repeat: no-repeat;
-	margin: 0 auto;
+	margin: 180px auto;
 	width: 1200px;
 	height: 600px;
 }
@@ -142,6 +134,12 @@ span{
 .onlineBox .body table td span.playing{
 	color: red;
 }
+.onlineBox .body table td span.prepare{
+	color: blue;
+}
+.onlineBox .body table td span.offline{
+	color: #727272;
+}
 .roomBox{
 	position: absolute;
 	top: 44px;
@@ -167,7 +165,8 @@ span{
 	overflow-y: scroll;
 }
 .rooms .room{
-	margin: 0px 38px 20px;
+	margin: 0px 10px 20px;
+	width: 100px;
 	float: left;
 	text-align: center;
 }
@@ -195,6 +194,9 @@ span{
 	font-size: 18px;
 }
 .chats input[type=text]{
+	text-indent: 0.4em;
+	text-align: left;
+	color: #000000;
 	position: absolute;
 	bottom: 10px;
 	left: 180px;
