@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.container{
+				width: 700px;
+				height: 700px;
+			}
+			.left{
+				width: 140px;
+				float: left;
+			}
+			.right{
+				width: 140px;
+				float: right;
+			}
+			img{
+				transition: all 1s linear;
+			}
+			.compare{
+				clear: both;
+				height: 500px;
+				width: 700px;
+				overflow-y: scroll;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="left">
+				<img data-type="0" src="img/拳头.jpg"/>
+				<img data-type="1" src="img/剪刀.jpg"/>
+				<img data-type="2" src="img/布.jpg"/>
+			</div>
+			<div class="right">
+				<img data-type="0" src="img/拳头.jpg"/>
+				<img data-type="1" src="img/剪刀.jpg"/>
+				<img data-type="2" src="img/布.jpg"/>
+			</div>
+			<div class="compare">
+				<ul>
+					
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+	$(function(){
+		$(".left img").click(function(){
+			//点击事件
+			var type = $(this).data("type");
+			if(type == 0){
+				$(this).css("transform","translate(150px,140px)");
+			}else if(type == 1){
+				$(this).css("transform","translate(150px,0px)");
+			}else if(type == 2){
+				$(this).css("transform","translate(150px,-140px)");
+			}
+			//电脑随机出拳
+			var arr = $(".container .right img");
+			var temp = $(arr[Math.floor(Math.random() * arr.length)]);
+			var type1 = temp.data("type");
+			if(type1 == 0){
+				temp.css("transform","translate(-150px,140px)");
+			}else if(type1 == 1){
+				temp.css("transform","translate(-150px,0px)");
+			}else if(type1 == 2){
+				temp.css("transform","translate(-150px,-140px)");
+			}
+			//图片返回
+			var that = $(this)
+			setTimeout(function(){
+				temp.css("transform","translate(0px,0px)");
+				that.css("transform","translate(0px,0px)");
+			},1200);
+			
+			//比较
+			 var res = type - type1;
+			if(res==0){
+				$(".compare ul").prepend("<li>你平了,"+new Date()+"</li>");
+			}else if(res==-1 || res==2){
+				$(".compare ul").prepend("<li>你赢了,"+new Date()+"</li>");
+			}else if(res==1 || res==-2){
+				$(".compare ul").prepend("<li>你输了,"+new Date()+"</li>");
+			}
+			
+		});
+	})
+		
+	</script>
+</html>

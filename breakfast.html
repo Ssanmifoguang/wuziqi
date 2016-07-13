@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body >
+		<select id="food">
+			<option>包子</option>
+			<option>饺子</option>
+			<option>鸡蛋</option>
+		</select>
+		<input id="num" type="number"/>
+		<button id="btn">确定</button>
+	</body>
+	<script type="text/javascript">
+		window.onload = function(){
+			
+			var btn = document.getElementById("btn");
+			btn.onclick=function(){
+			var food = document.getElementById("food").value;
+			var num = document.getElementById("num").value;
+			var price;
+			if(food=="包子"){
+					price = 5;
+			}else if(food=="饺子"){
+					price = 8;
+			}else if(food=="鸡蛋"){
+					price = 2;
+			}
+				
+				var sum = price * num;
+				
+				sum = sum.toFixed(2);//保留两位小数
+				var arr = sum.split(".");//小数点分隔成数组
+				sum = " ";//清空sum值
+				var temp = arr[0];//取出整数位
+				var index = Math.ceil(temp.length / 3) - 1;//取出千分位数
+				/*循环插入逗号*/
+				for(var i=0;i < index;i++){
+					sum = ","+temp.slice(temp.length-3)+sum;//取出最后三位
+					temp = temp.slice(0,temp.length-3);//存储未分隔的数字
+				}
+				sum= temp + sum +"." + arr[1];//整合数字
+				alert("您点了"+num+"个"+food+"一共需要支付"+sum+"元！");
+			}
+		}
+	</script>
+</html>

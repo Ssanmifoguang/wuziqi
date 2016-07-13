@@ -7,13 +7,29 @@
 	</head>
 	<body>
 		<div class="loginBox">
-			<input type="text" name="" id="" value="" placeholder="请输入用户名" />
-			<button onclick="goMain()">进入游戏</button>
+			<input type="text" name="" id="username" value="" placeholder="请输入用户名" />
+			<button id="loginBtn">进入游戏</button>
 		</div>
 	</body>
+	<script src="js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		function goMain(){
-			window.location.href = "mian.html";
-		}
+		$(function(){
+			var user = localStorage.getItem("user");
+			if(user){
+				window.location.href="main.html";
+			}
+			$("#loginBtn").click(function(){
+				var username = $("#username").val();
+				var user={
+					name: username,
+					id:null,
+					total:0,
+					win:0,
+					flag:0 //状态：0表示离线，1表示在线，2表示准备中，3表示游戏中
+				}
+				localStorage.setItem("user",JSON.stringify(user));
+				window.location.href="main.html";
+			});
+		});
 	</script>
 </html>
