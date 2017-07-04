@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				background-color: #FFFFCC;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500px" height="300px"></canvas><br />
+		<button id="pencil">铅笔</button>
+		<button id="line">直线</button>
+		<button id="rect">矩形</button>
+		<button id="circle">圆形</button>
+		<button id="eraser">橡皮擦</button>
+		<button id="save">保存</button>
+		<select id="linewidth">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+		</select>
+		<input type="color" name="color" id="color" value="" />
+	</body>
+	<script src="js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var pen = null;
+		var isDraw = false;
+		var offset = 0;
+		var ctx = $("#myCanvas");
+		var x = 0;
+		var y = 0;
+		var color = $("#color").val();
+		var linewidth = $("#linewidth").val();
+		var size = pen.lineWidth * 10;
+		$(function(){
+			pen = $("#myCanvas").get(0).getContext("2d");
+			offset = $("#myCanvas").offset();
+			
+			//铅笔函数
+			$("#pencil").click(function(){
+				ctx.unbind().mousedown(function(event){
+					isDraw = true;
+					pen.beginPath();
+					pen.moveTo(event.clientX - offset.left,event.clientY - offset.top);
+				});
+				ctx.mousemove(function(event){
+					if(isDraw){
+						pen.lineTo(event.clientX - offset.left,event.clientY - offset.top);
+						pen.stroke();
+					}
+				});
+				ctx.mouseup(function(event){
+					isDraw = false;
+					pen.closePath();
+				});
+				ctx.mouseleave(function(){
+					isDraw = false;
+				});
+			});
+			
+			//直线函数
+			$("#line").click(function(){
+				ctx.unbind().mousedown(function(event){
+					isDraw = true;
+					pen.beginPath();
+					pen.moveTo(event.clientX - offset.left,event.clientY - offset.top);
+				});
+				ctx.mouseup(function(event){
+					if(isDraw){
+						pen.lineTo(event.clientX - offset.left,event.clientY - offset.top);
+						pen.stroke();
+						pen.closePath();
+					}
+				});
+				ctx.mouseleave(function(){
+					if(isDraw){
+						pen.lineTo(event.clientX - offset.left,event.clientY - offset.top);
+						pen.stroke();
+						pen.closePath();
+					}
+				});
+				
+			});
+			
+			//矩形函数
+			$("#rect").click(function(){
+				ctx.unbind().mousedown(function(event){
+					isDraw = true;
+					pen.beginPath();
+					x = event.clientX - offset.left;
+					y = event.clientY - offset.top;
+				});
+				ctx.mouseup(function(event){
+					if(isDraw){
+						pen.strokeRect(x,y,event.clientX - offset.left - x,event.clientY - offset.top - y);
+						pen.closePath();
+					}
+				});
+				ctx.mouseleave(function(){
+					isDraw = false;
+				});
+			});
+			
+			//圆形函数
+			$("#circle").click(function(){
+				ctx.unbind().mousedown(function(event){
+					isDraw = true;
+					pen.beginPath();
+					x = event.clientX - offset.left;
+					y = event.clientY - offset.top;
+				});
+				ctx.mouseup(function(event){
+					if(isDraw){
+						var width = Math.abs(event.clientX - offset.left - x);
+						var height = Math.abs(event.clientY - offset.top - y);
+						var r = width>height?width:height;
+						pen.arc(x,y,r,0, Math.PI*2, true);
+						pen.stroke();
+						pen.closePath();
+					}
+					isDraw = false;
+				});
+				ctx.mouseleave(function(){
+					
+					isDraw = false;
+				});
+			});
+			
+			//橡皮擦函数
+			$("#eraser").click(function(){
+				
+				ctx.unbind().mousedown(function(event){
+					isDraw = true;
+					pen.beginPath();
+					if(isDraw){
+						pen.clearRect(event.clientX - offset.left,event.clientY - offset.top,size,size);
+					}
+				});
+				ctx.mousemove(function(event){
+					x = event.clientX - offset.left;
+					y = event.clientY - offset.top;
+					if(isDraw){
+						pen.clearRect(x,y,size,size);
+					}
+				});
+				ctx.mouseup(function(event){
+					pen.closePath();
+					isDraw = false;
+				});
+				ctx.mouseleave(function(){
+					isDraw = false;
+				});
+				
+			});
+			//
+			
+			$("#save").click(function(){
+				var str = $("#myCanvas").get(0).toDataURL();
+				$("body").append("<img src = '"+str+"'/>");
+			});
+			//改变颜色
+			$("#color").change(function(){
+				color = $("#color").val();
+				pen.strokeStyle = color;
+			});
+			//改变宽度
+			$("#linewidth").change(function(){
+				linewidth = $("#linewidth").val();
+				pen.lineWidth = linewidth;
+				size = pen.lineWidth * 10;
+			});
+		});
+		
+	</script>
+</html>

@@ -10,11 +10,12 @@
 span{
 	color: #727272;
 }
+
 .loginBox{
 	position: relative;
 	background: url(../img/login-bg.jpg);
 	background-repeat: no-repeat;
-	margin: 180px auto;
+	margin: 0px auto;
 	width: 1200px;
 	height: 600px;
 }
@@ -47,7 +48,7 @@ span{
 	position: relative;
 	background: url(../img/main-bg.jpg);
 	background-repeat: no-repeat;
-	margin: 180px auto;
+	margin: 0px auto;
 	width: 1200px;
 	height: 600px;
 }
@@ -58,13 +59,19 @@ span{
 	height: 30px;
 	width: 170px;
 }
-.mainBox button{
+.mainBox button#createBtn{
 	position: absolute;
 	bottom: 36px;
 	left: 290px;
 	width: 60px;
 	height: 60px;
 	cursor: pointer;
+}
+.mainBox button.gameBtn{
+	color: #000;
+	font-size:18px;
+	cursor: pointer;
+	margin-top: 10px;
 }
 .mainBox input[type=text],.mainBox button{
 	border: none;
@@ -169,6 +176,7 @@ span{
 	width: 100px;
 	float: left;
 	text-align: center;
+	cursor: pointer;
 }
 .chats{
 	height: 190px;
@@ -209,3 +217,14 @@ span{
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
 }
+
+#canvas{
+	background-color: burlywood;
+}
+#chestBox{
+	position: absolute;
+	z-index: 1000;
+	position: relative;
+}
+
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				background-color: #FFFFCC;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500px" height="500px"></canvas>
+	</body>
+	
+	<script type="text/javascript">
+		var canvas = document.getElementById("myCanvas");
+		var ctx = canvas.getContext('2d');
+		//开始绘图
+		
+		setInterval(function(){
+			drawRect();
+		},600);
+		
+		//绘制圆形
+		function drawArc(){
+			//设置线性渐变色
+			//参数：(起始坐标x,起始坐标y,终点坐标x,终点坐标y)
+			var myLinear = ctx.createLinearGradient(200, 200, 350, 350);
+			myLinear.addColorStop(0, "#BABABA"); 
+			myLinear.addColorStop(1, "#636363");
+			//设置放射性渐变
+			//参数：(起始圆心,起始圆半径,终点圆心,终点圆半径)
+			var myRadial = ctx.createRadialGradient(150,150,10,150,150,80)
+			myRadial.addColorStop(0, "#BABABA");
+			myRadial.addColorStop(1, "#636363");
+			
+			//开始绘制
+			ctx.beginPath(); 
+			ctx.arc(150, 150, 50, 0, Math.PI*2, true); 
+			ctx.lineWidth = 1.0; 
+			ctx.fillStyle = myRadial; 
+			ctx.fill();
+		}
+		//循环绘制矩形
+		function drawRect(){
+			ctx.clearRect(0,0,500,500);
+			for(var i=0;i<20;i++){
+			var x = Math.floor(Math.random() * 480);
+			var y = Math.floor(Math.random() * 480);
+			ctx.beginPath();
+			ctx.fillStyle = randomColor();
+			ctx.fillRect(x,y,20,20);
+			ctx.stroke();//可描边
+			ctx.closePath();
+		}
+		}
+		
+		function randomColor(){
+			var colorElemt = "0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f";
+			var colorArray = colorElemt.split(",");
+			var color = "#";
+			for(var i =0;i<6;i++){
+				color+=colorArray[Math.floor(Math.random()*16)];
+			}
+			return  color;
+		}
+	</script>
+</html>
